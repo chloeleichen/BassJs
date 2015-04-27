@@ -12,11 +12,18 @@
 <body>
   <!-- main ui element -->
   <div id="content" class="content container">
-      <div class= "md-col-6 m4">
-        <div id = "clock" class="p2 bg-white border rounded">
-          some text
+      <div class= "md-col-5 m4">
+        <div class="overflow-hidden bg-white border rounded">
+          <div class="p2 bg-silver">
+            <h1 class="h2 m0">Clock</h1>
+          </div>
+          <div class="p2">
+            <p class="m0" id = "clock">Click Start button below to start.</p>
+            <p><button id = "start" class="mt2 mr2"> start </button>  
+        <button id = "stop" class="mt2"> stop </button> </p> 
+
+          </div>
         </div>
-        <button id = "start" class="mt2"> start </button>       
       </div>
   </div>
   <script src="src/script.js"></script>
