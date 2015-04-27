@@ -12,24 +12,39 @@
 <body>
   <!-- main ui element -->
   <div id="content" class="content container">
-      <div class= "md-col-5 m4">
-        <div class="overflow-hidden bg-white border rounded">
-          <div class="p2 bg-silver">
-            <h1 class="h2 m0">Clock</h1>
-          </div>
-          <div class="p2">
-            <p class="m0" id = "clock">Click Start button below to start.</p>
-            <p><button id = "start" class="mt2 mr2"> start </button>  
-        <button id = "stop" class="mt2"> stop </button> </p> 
+    <div class= "md-col-5 m4">
+<!-- A clock  -->
+      <div class="overflow-hidden bg-white border rounded clock">
+        <div class="p2 bg-silver">
+          <h1 class="h2 m0">Clock</h1>
+        </div>
+        <div class="p2">
+          <p class="m0" id = "clock">Click Start button below to start.</p>
+          <p><button id = "clock-control" class="mt2 mr2" value = "start"> Start </button>  
 
           </div>
         </div>
+<!-- end of clock  -->
+<!-- A something else  -->
+        <div class="overflow-hidden bg-white border rounded clock mt2">
+        <div class="p2 bg-silver">
+          <h1 class="h2 m0">Clock</h1>
+        </div>
+        <div class="p2">
+          <div class="m0 block-wrapper relative border"> <div class="bg-maroon" id = "block"></div></div>
+          <p><button id = "block-control" class="mt2 mr2"> start </button>  
+
+
+          </div>
+        </div>
+
+
       </div>
-  </div>
-  <script src="src/script.js"></script>
-  <script> 
+    </div>
+    <script src="src/script.js"></script>
+    <script> 
 
-</script>
+    </script>
 
-</body>
-</html>
+  </body>
+  </html>
