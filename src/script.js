@@ -65,9 +65,6 @@ var Block = function(target, trigger){
 		}
 		var move = setInterval(frame, 10);
 	}
-
-	
-
 	
 	trigger.addEventListener("click", function(){
 		liner();
