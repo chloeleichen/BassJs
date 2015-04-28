@@ -1,3 +1,5 @@
+(function(){
+'use strict';
 var Clock  = function(target, trigger){
 	this.target = target;
 	this.trigger = trigger;
@@ -42,6 +44,7 @@ Clock.prototype = {
 	});
   }
 }
+})();
 //var c = new Clock(document.getElementById("clock"), document.getElementById("clock-control"));
 
 // Animation, the old way, not request animation frame 
@@ -51,6 +54,8 @@ Clock.prototype = {
 //		  timePassed: the time in ms passed from the animation starts 
 //		  progress: the fraction of animation time that has already passed, calculated on every frame as timePassed/duration, [0, 1]
 //        delta(progess) a function that returns the current animation progress  
+(function(){
+'use strict';
 
 var Animation = (function(){
 
@@ -169,7 +174,51 @@ var progressPow = new Animation(document.getElementById("progress-pow"), documen
 var progressPow = new Animation(document.getElementById("progress-bounce"), document.getElementById("block-control-bounce"), {delta: getFunc("bounce"), duration: 4000});
 
 var progressIn = new Animation(document.getElementById("progress-ease-out"), document.getElementById("block-control-ease-out"), {delta: getFunc("bounce ease out"), duration: 4000});
+})();
 
+//Some fancy text input styles
+(function(){
+'use strict';
 
+if (!String.prototype.trim) {
+  (function() {
+    // Make sure we trim BOM and NBSP
+    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+    String.prototype.trim = function() {
+      return this.replace(rtrim, '');
+    };
+  })();
+}
 
+// forEach method, could be shipped as part of an Object Literal/Module
+var forEach = function (array, callback, scope) {
+  for (var i = 0; i < array.length; i++) {
+    callback.call(scope, i, array[i]); // passes back stuff we need
+  }
+};
+
+// Usage:
+// optionally change the scope as final parameter too, like ECMA5
+var myNodeList = document.querySelectorAll('input.input__field');
+forEach(myNodeList, function (index, inputEl) {
+    console.log(inputEl.value);
+    if(inputEl.value.trim() !== ''){
+    	inputEl.parentNode.classList.add('input--filled');
+    }
+// events:
+	inputEl.addEventListener( 'focus', onInputFocus );
+	inputEl.addEventListener( 'blur', onInputBlur );
+
+});
+
+function onInputFocus( ev ) {
+	ev.target.parentNode.classList.add('input--filled');
+				}
+function onInputBlur(ev) {
+	if( ev.target.value.trim() === '' ) {
+	ev.target.parentNode.classList.remove('input--filled');
+	}
+}
+
+})();
 
