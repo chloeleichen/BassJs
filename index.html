@@ -10,10 +10,11 @@
 
 </head>
 <body>
+
   <!-- main ui element -->
-  <div id="content" class="content container">
-    <div class= "md-col-10 m4">
-<!-- A clock  -->
+  <main id="content" class="sm-col sm-col-right sm-col-10">
+    <div class= "container-small px2 sm-px3 py2 mb3">
+      <!-- A clock  -->
       <div class="overflow-hidden bg-white border rounded clock">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Clock</h1>
@@ -24,33 +25,72 @@
 
           </div>
         </div>
-<!-- end of clock  -->
-<!-- A something else  -->
+        <!-- end of clock  -->
+        <!-- A something else  -->
         <div class="overflow-hidden bg-white border rounded clock mt2">
-        <div class="p2 bg-silver">
-          <h1 class="h2 m0">Animated Block</h1>
-        </div>
-        <div class="p2">
-          <!-- <div class="m0 block-wrapper relative"> <div class="bg-maroon" id = "block"></div></div> -->
-          <progress value="0" class="progress" id = "progress-liner"></progress>
-          <p><button id = "block-control-liner" class="mt2 mr2"> start </button>  </p>
-        </div>
-        <div class="p2">      
-          <progress value="0" class="progress" id = "progress-pow"></progress>
-          <p><button id = "block-control-pow" class="mt2 mr2"> start </button>  </p>
-        </div>
-        <div class="p2">
-          <progress value="0" class="progress" id = "progress-bow"></progress>
-          <p><button id = "block-control-bow" class="mt2 mr2"> start </button>  </p>
-        </div>
-        <div class="p2">
-          <progress value="0" class="progress" id = "progress-ease-in"></progress>
-          <p><button id = "block-control-ease-in" class="mt2 mr2"> start </button>  </p>
-        </div>
+          <div class="p2 bg-silver">
+            <h1 class="h2 m0">Animated Progress Bar</h1>
+          </div>
+          <div class="p2">
+            <!-- <div class="m0 block-wrapper relative"> <div class="bg-maroon" id = "block"></div></div> -->
+            <progress value="0" class="progress orange " id = "progress-liner"></progress>
+            <p><button id = "block-control-liner" class="mt2 mr2"> start liner progress </button>  </p>
+          </div>
+          <div class="p2">      
+            <progress value="0" class="progress olive" id = "progress-pow"></progress>
+            <p><button id = "block-control-pow" class="mt2 mr2"> start speed-up progress </button>  </p>
+          </div>
+          <div class="p2">
+            <progress value="0" class="progress teal" id = "progress-bounce"></progress>
+            <p><button id = "block-control-bounce" class="mt2 mr2"> start bouncing progress </button>  </p>
+          </div>
+          <div class="p2">
+            <progress value="0" class="progress maroon" id = "progress-ease-out"></progress>
+            <p><button id = "block-control-ease-out" class="mt2 mr2"> start ease in-out progress </button>  </p>
+          </div>
         </div>
 
 
-      </div>
+      </main>
+      <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
+    <ul class="list-reset mt2 mb1" >
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> Digital Clock </a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> Progress Bar </a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+      <li class="col-12 mt2 mb2"><a href="#" class ="block button button-transparent
+      "> dummy</a></li>
+
+    </ul>
+
+  </nav>
+
     </div>
     <script src="src/script.js"></script>
     <script> 

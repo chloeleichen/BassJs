@@ -1,6 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-body {
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
+body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+#clock{
+	font-family: 'Amatic SC', cursive;
+	font-size: 3rem;
+	font-weight: bold;
 }
 
 #block{
@@ -13,5 +20,17 @@ body {
 	height: 20px;
 	width: 100%;
 
+}
+
+.container-small{
+	max-width: 58rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 40em){
+	.sm-fixed {
+  position: fixed;
+}
 }
 
