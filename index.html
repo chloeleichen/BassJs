@@ -12,7 +12,7 @@
 <body>
   <!-- main ui element -->
   <div id="content" class="content container">
-    <div class= "md-col-5 m4">
+    <div class= "md-col-10 m4">
 <!-- A clock  -->
       <div class="overflow-hidden bg-white border rounded clock">
         <div class="p2 bg-silver">
@@ -31,11 +31,22 @@
           <h1 class="h2 m0">Animated Block</h1>
         </div>
         <div class="p2">
-          <div class="m0 block-wrapper relative border"> <div class="bg-maroon" id = "block"></div></div>
-          <p><button id = "block-control" class="mt2 mr2"> start </button>  
-
-
-          </div>
+          <!-- <div class="m0 block-wrapper relative"> <div class="bg-maroon" id = "block"></div></div> -->
+          <progress value="0" class="progress" id = "progress-liner"></progress>
+          <p><button id = "block-control-liner" class="mt2 mr2"> start </button>  </p>
+        </div>
+        <div class="p2">      
+          <progress value="0" class="progress" id = "progress-pow"></progress>
+          <p><button id = "block-control-pow" class="mt2 mr2"> start </button>  </p>
+        </div>
+        <div class="p2">
+          <progress value="0" class="progress" id = "progress-bow"></progress>
+          <p><button id = "block-control-bow" class="mt2 mr2"> start </button>  </p>
+        </div>
+        <div class="p2">
+          <progress value="0" class="progress" id = "progress-ease-in"></progress>
+          <p><button id = "block-control-ease-in" class="mt2 mr2"> start </button>  </p>
+        </div>
         </div>
 
 
