@@ -1,5 +1,3 @@
-(function(){
-'use strict';
 var Clock  = function(target, trigger){
 	this.target = target;
 	this.trigger = trigger;
@@ -44,8 +42,7 @@ Clock.prototype = {
 	});
   }
 }
-})();
-//var c = new Clock(document.getElementById("clock"), document.getElementById("clock-control"));
+var c = new Clock(document.getElementById("clock"), document.getElementById("clock-control"));
 
 // Animation, the old way, not request animation frame 
 // @params delay: time beetween frames 
