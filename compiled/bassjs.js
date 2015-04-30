@@ -1,3 +1,99 @@
+//Add trim to strong 
+if (!String.prototype.trim) {
+  (function() {
+    // Make sure we trim BOM and NBSP
+    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+    String.prototype.trim = function() {
+      return this.replace(rtrim, '');
+    };
+  })();
+}
+
+(function(){
+	console.log(location.pathname);
+
+})();
+
+(function(){
+var Clock  = function(target, trigger){
+	this.target = target;
+	this.trigger = trigger;
+	this.stop = stop;
+	this ._init();
+}
+Clock.prototype = {
+	_create:  function(){
+		var date = new Date();
+		var hour = date.getHours() < 10? 0 + String(date.getHours()) : String(date.getHours());
+		var min = date.getMinutes() < 10? 0 + String(date.getMinutes()) : String(date.getMinutes());
+		var sec = date.getSeconds() < 10? 0 + String(date.getSeconds()) : String(date.getSeconds());
+		var currentTime = hour + ":" + min + ":" + sec ;
+		this.target.innerHTML = currentTime;
+	}
+	,
+	_update:  function(){
+		var self = this;
+		start = setInterval(function(){
+			self.target.style.color = "black";
+			self._create();
+		}, 1000);
+	}
+	,
+	_init: function(){
+		var self = this;
+	//self._create();
+	self.trigger.addEventListener("click", function(){
+		if(this.value == "start"){
+			this.innerHTML = "pause";
+			this.value = "pause";
+			self._update();
+		} else if(this.value == "pause"){
+			console.log("called");
+			clearInterval(start);
+			this.value = this.innerHTML = "start";
+			self.target.style.color = "red";
+		} else{
+			return;
+		}
+		
+	});
+  }
+}
+window.Clock = Clock;
+})();
+//Some fancy text input styles
+(function(){
+'use strict';
+// forEach method, could be shipped as part of an Object Literal/Module
+var forEach = function (array, callback, scope) {
+  for (var i = 0; i < array.length; i++) {
+    callback.call(scope, i, array[i]); // passes back stuff we need
+  }
+};
+// Usage:
+// optionally change the scope as final parameter too, like ECMA5
+var myNodeList = document.querySelectorAll('input.input__field');
+forEach(myNodeList, function (index, inputEl) {
+    if(inputEl.value.trim() !== ''){
+    	inputEl.parentNode.classList.add('input--filled');
+    }
+// events:
+	inputEl.addEventListener( 'focus', onInputFocus );
+	inputEl.addEventListener( 'blur', onInputBlur );
+
+});
+
+function onInputFocus( ev ) {
+	ev.target.parentNode.classList.add('input--filled');
+				}
+function onInputBlur(ev) {
+	if( ev.target.value.trim() === '' ) {
+	ev.target.parentNode.classList.remove('input--filled');
+	}
+}
+
+})();
+
 // Animation, the old way, not request animation frame 
 // @params delay: time beetween frames 
 //		  duration: the full time animation should take
@@ -126,132 +222,48 @@ var progressPow = new Animation(document.getElementById("progress-bounce"), docu
 
 var progressIn = new Animation(document.getElementById("progress-ease-out"), document.getElementById("block-control-ease-out"), {delta: getFunc("bounce ease out"), duration: 4000});
 })();
-if (!String.prototype.trim) {
-  (function() {
-    // Make sure we trim BOM and NBSP
-    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-    String.prototype.trim = function() {
-      return this.replace(rtrim, '');
-    };
-  })();
-}
-(function(){
-var Clock  = function(target, trigger){
-	this.target = target;
-	this.trigger = trigger;
-	this.stop = stop;
-	this ._init();
-}
-Clock.prototype = {
-	_create:  function(){
-		var date = new Date();
-		var hour = date.getHours() < 10? 0 + String(date.getHours()) : String(date.getHours());
-		var min = date.getMinutes() < 10? 0 + String(date.getMinutes()) : String(date.getMinutes());
-		var sec = date.getSeconds() < 10? 0 + String(date.getSeconds()) : String(date.getSeconds());
-		var currentTime = hour + ":" + min + ":" + sec ;
-		this.target.innerHTML = currentTime;
-	}
-	,
-	_update:  function(){
-		var self = this;
-		start = setInterval(function(){
-			self.target.style.color = "black";
-			self._create();
-		}, 1000);
-	}
-	,
-	_init: function(){
-		var self = this;
-	//self._create();
-	self.trigger.addEventListener("click", function(){
-		if(this.value == "start"){
-			this.innerHTML = "pause";
-			this.value = "pause";
-			self._update();
-		} else if(this.value == "pause"){
-			console.log("called");
-			clearInterval(start);
-			this.value = this.innerHTML = "start";
-			self.target.style.color = "red";
-		} else{
-			return;
-		}
-		
-	});
-  }
-}
-window.Clock = Clock;
-})();
-//Some fancy text input styles
-(function(){
-'use strict';
-// forEach method, could be shipped as part of an Object Literal/Module
-var forEach = function (array, callback, scope) {
-  for (var i = 0; i < array.length; i++) {
-    callback.call(scope, i, array[i]); // passes back stuff we need
-  }
-};
-// Usage:
-// optionally change the scope as final parameter too, like ECMA5
-var myNodeList = document.querySelectorAll('input.input__field');
-forEach(myNodeList, function (index, inputEl) {
-    if(inputEl.value.trim() !== ''){
-    	inputEl.parentNode.classList.add('input--filled');
-    }
-// events:
-	inputEl.addEventListener( 'focus', onInputFocus );
-	inputEl.addEventListener( 'blur', onInputBlur );
-
-});
-
-function onInputFocus( ev ) {
-	ev.target.parentNode.classList.add('input--filled');
-				}
-function onInputBlur(ev) {
-	if( ev.target.value.trim() === '' ) {
-	ev.target.parentNode.classList.remove('input--filled');
-	}
-}
-
-})();
-
 (function () {
 	'use strict';
-	var validate = function(e, el, message){
-		var value = el.value.trim();
-		//console.log(value);
-		if(value == null || value == ''){
-			console.log("empty");
-			e.preventDefault();
-			el.classList.add("swing", "is-warning");
-			el.classList.remove("shake","is-error");
-			message.innerHTML = "This field is required";
-			return false;
-		} else if(isNaN(parseInt(value))&& value !=='' && value !== null ){
-			console.log("not a number");
-			e.preventDefault();
-			el.classList.add("shake","is-error");
-			el.classList.remove("swing", "is-warning");
-			message.innerHTML = "A number is required";
-			return false;
-		} else{
-			el.classList.remove("swing", "is-warning");
-			el.classList.remove("shake", "is-error");
-			el.classList.add("is-success");
-			message.innerHTML = "Validation success";
-			return true;
+	var validation = function(options){
+		var self ={};
+		self.ev = options.ev;
+		self.el = options.el;
+		self.message = options.message;
+		var value = self.el.value.trim();
+		var animationEnd = (Modernizr.prefixed('animation') + "End").replace(/^ms/, "MS").replace(/^Webkit/, "webkit").replace(/^Moz.*/, "animationend");
+
+
+		self.validateNumber = function(){
+			//console.log(value);
+			self.el.addEventListener(animationEnd, function(){
+				self.el.classList.remove("shake", "swing");
+			});	
+			if(value == null || value == ''){
+				console.log("empty");
+				self.ev.preventDefault();
+				self.el.classList.add("swing", "is-warning");
+				self.el.classList.remove("shake","is-error");
+				self.message.innerHTML = "This field is required";
+				return false;
+			} else if(isNaN(parseInt(value))&& value !=='' && value !== null ){
+				console.log("not a number");
+				self.ev.preventDefault();
+				self.el.classList.add("shake","is-error");
+				self.el.classList.remove("swing", "is-warning");
+				self.message.innerHTML = "A number is required";
+				return false;
+			} else{
+				self.el.classList.remove("swing", "is-warning");
+				self.el.classList.remove("shake", "is-error");
+				self.el.classList.add("is-success");
+				self.message.innerHTML = "Validation success";
+				return true;
+			}
+			
 		}
+				
+		return self;
 	}
-//on transitionend remove
-	var input = document.getElementById("input__field--validate");
-	var trigger = document.getElementById("validate");
-	var message = document.getElementById("input__message--validate");
-
-
-	trigger.addEventListener("click", function(e){
-		e.preventDefault();
-		validate(e, input, message);
-	});
-
+window.validation = validation;
 	
 })();

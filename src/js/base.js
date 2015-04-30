@@ -1,3 +1,4 @@
+//Add trim to strong 
 if (!String.prototype.trim) {
   (function() {
     // Make sure we trim BOM and NBSP
@@ -7,3 +8,8 @@ if (!String.prototype.trim) {
     };
   })();
 }
+
+(function(){
+	console.log(location.pathname);
+
+})();
