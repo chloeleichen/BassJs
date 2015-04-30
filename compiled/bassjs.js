@@ -9,8 +9,23 @@ if (!String.prototype.trim) {
   })();
 }
 
+
+// forEach method
+if (!NodeList.prototype.forEach) {
+	var forEach = function (array, callback, scope) {
+	  for (var i = 0; i < array.length; i++) {
+	    callback.call(scope, i, array[i]); // passes back stuff we need
+	  }
+	};
+}
+
+
+
 (function(){
-	console.log(location.pathname);
+	var url = location.href;
+	var match = url.substring(url.lastIndexOf('/')+1);
+
+	console.log(match);
 
 })();
 
@@ -64,12 +79,6 @@ window.Clock = Clock;
 //Some fancy text input styles
 (function(){
 'use strict';
-// forEach method, could be shipped as part of an Object Literal/Module
-var forEach = function (array, callback, scope) {
-  for (var i = 0; i < array.length; i++) {
-    callback.call(scope, i, array[i]); // passes back stuff we need
-  }
-};
 // Usage:
 // optionally change the scope as final parameter too, like ECMA5
 var myNodeList = document.querySelectorAll('input.input__field');
@@ -231,13 +240,15 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
 		self.message = options.message;
 		var value = self.el.value.trim();
 		var animationEnd = (Modernizr.prefixed('animation') + "End").replace(/^ms/, "MS").replace(/^Webkit/, "webkit").replace(/^Moz.*/, "animationend");
-
-
 		self.validateNumber = function(){
 			//console.log(value);
-			self.el.addEventListener(animationEnd, function(){
+			self.el.addEventListener(animationEnd, function(e){
+				console.dir(this);
 				self.el.classList.remove("shake", "swing");
+				this.removeEventListener(e);
+				console.dir(this);	
 			});	
+			
 			if(value == null || value == ''){
 				console.log("empty");
 				self.ev.preventDefault();
@@ -265,5 +276,4 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
 		return self;
 	}
 window.validation = validation;
-	
 })();

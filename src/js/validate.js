@@ -7,13 +7,15 @@
 		self.message = options.message;
 		var value = self.el.value.trim();
 		var animationEnd = (Modernizr.prefixed('animation') + "End").replace(/^ms/, "MS").replace(/^Webkit/, "webkit").replace(/^Moz.*/, "animationend");
-
-
 		self.validateNumber = function(){
 			//console.log(value);
-			self.el.addEventListener(animationEnd, function(){
+			self.el.addEventListener(animationEnd, function(e){
+				console.dir(this);
 				self.el.classList.remove("shake", "swing");
+				this.removeEventListener(e);
+				console.dir(this);	
 			});	
+			
 			if(value == null || value == ''){
 				console.log("empty");
 				self.ev.preventDefault();
@@ -41,5 +43,4 @@
 		return self;
 	}
 window.validation = validation;
-	
 })();

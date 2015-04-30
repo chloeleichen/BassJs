@@ -9,7 +9,22 @@ if (!String.prototype.trim) {
   })();
 }
 
+
+// forEach method
+if (!NodeList.prototype.forEach) {
+	var forEach = function (array, callback, scope) {
+	  for (var i = 0; i < array.length; i++) {
+	    callback.call(scope, i, array[i]); // passes back stuff we need
+	  }
+	};
+}
+
+
+
 (function(){
-	console.log(location.pathname);
+	var url = location.href;
+	var match = url.substring(url.lastIndexOf('/')+1);
+
+	console.log(match);
 
 })();
