@@ -15,7 +15,7 @@
 <main id="content" class="sm-col sm-col-right sm-col-10">
   <div class="container-small px2 sm-px3 py2 mb3">
     <!-- A clock  -->
-    <div class="overflow-hidden bg-white border rounded clock">
+    <section data-scroll-index='1' class="overflow-hidden bg-white border rounded clock">
       <div class="p2 bg-silver">
         <h1 class="h2 m0">Clock</h1>
       </div>
@@ -24,11 +24,11 @@
         <p class="m0" id = "clock">Click Start button below to start.</p>
         <p><button id = "clock-control" class="mt2 mr2" value = "start"> Start </button>  
         </div>
-      </div>
+      </section>
       <!-- end of clock  -->
 
       <!--input style   -->
-      <div class="overflow-hidden bg-white border rounded mt2" id="text-input">
+      <section data-scroll-index='2' class="overflow-hidden bg-white border rounded mt2" id="text-input">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Fancy text input</h1>
         </div>
@@ -41,7 +41,7 @@
               </label>
             </div>
 
-            <div class="input mt4 mb2 input--mia">
+            <div data-scroll-index='1' class="input mt4 mb2 input--mia">
               <input class="input__field input__field--mia" type="text" id="input-1" />
               <label class="input__label input__label--mia" for="input-1">
                 <span class="input__label-content input__label-content--mia">Your email</span>
@@ -49,10 +49,10 @@
             </div>
           </form>
         </div>
-      </div> 
+      </section> 
 <!-- end of input style  -->
       <!--Form validation-->
-      <div class="overflow-hidden bg-white border rounded mt2" id="form-validation">
+      <section data-scroll-index='3' class="overflow-hidden bg-white border rounded mt2" id="form-validation">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Simple form validation</h1>
         </div>
@@ -65,11 +65,11 @@
           </form>
 
         </div>
-      </div>
+      </section>
 
 <!-- end of form validation-->
 <!-- Animated progress bar -->
-      <div class="overflow-hidden bg-white border rounded clock mt2" id = "progress">
+      <section data-scroll-index='4' class="overflow-hidden bg-white border rounded clock mt2" id = "progress">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Animated Progress Bar</h1>
         </div>
@@ -90,15 +90,15 @@
           <progress value="0" class="progress maroon" id = "progress-ease-out"></progress>
           <p><button id = "block-control-ease-out" class="mt2 mr2"> start ease in-out progress </button>  </p>
         </div>
-      </div>
+      </section>
 <!-- End of animated progress bar-->
 </main>
 <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
   <ul class="list-reset mt2 mb1" >
-    <li class="col-12"><a href="#clock" class ="p2 bg-aqua block button button-transparent"> Digital Clock </a></li>
-    <li class="col-12"><a href="#text-input" class ="p2 block button button-transparent"> Fancy text input</a></li>
-    <li class="col-12"><a href="#form-validation" class ="p2 block button button-transparent"> Form Validation</a></li>
-    <li class="col-12"><a href="#progress" class ="p2 block button button-transparent"> Progress Bar </a></li>
+    <li class="col-12"><a data-scroll-nav='1' class ="p2 bg-aqua block button button-transparent"> Digital Clock </a></li>
+    <li class="col-12"><a data-scroll-nav='2' class ="p2 block button button-transparent"> Fancy text input</a></li>
+    <li class="col-12"><a data-scroll-nav='3' class ="p2 block button button-transparent"> Form Validation</a></li>
+    <li class="col-12"><a data-scroll-nav='4' class ="p2 block button button-transparent"> Progress Bar </a></li>
     </ul>
 </nav>
 </div>

@@ -18,13 +18,3 @@ if (!NodeList.prototype.forEach) {
 	  }
 	};
 }
-
-
-
-(function(){
-	var url = location.href;
-	var match = url.substring(url.lastIndexOf('/')+1);
-
-	console.log(match);
-
-})();
