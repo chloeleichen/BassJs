@@ -68,8 +68,31 @@
       </section>
 
 <!-- end of form validation-->
+<!-- Start of modal window-->
+<section data-scroll-index='3' class="overflow-hidden bg-white border rounded mt2" id="form-validation">
+        <div class="p2 bg-silver">
+          <h1 class="h2 m0">Modal window</h1>
+        </div>
+        <div class="p2">
+          <button id ="modal-trigger">Open modal window</button>
+        </div>
+      <div class="overflow-hidden modal" id="modal">
+        <div class="modal-content bg-blue rounded mt2">
+          <h1 class="h2 p2 center white m0">Modal dialog</h1>
+        <div class="p2 center white">
+          <p>This is a modal window. You can do the following things with it:</p>
+        <button class=" button-outline mb1 white" id ="modal-close" >Close me!</button>
+        </div>
+      </div>
+    </div>
+      <div class="modal-overlay" id ="modal-overlay"></div><!-- the overlay element -->
+</section>
+
+
+<!-- End of modal window -->
+
 <!-- Animated progress bar -->
-      <section data-scroll-index='3' class="overflow-hidden bg-white border rounded clock mt2" id = "progress">
+      <section data-scroll-index='4' class="overflow-hidden bg-white border rounded clock mt2" id = "progress">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Animated Progress Bar</h1>
         </div>
@@ -95,10 +118,11 @@
 </main>
 <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
   <ul class="list-reset mt2 mb1" >
-    <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Digital Clock </a></li>
+    <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Digital clock </a></li>
     <li class="col-12"><a data-scroll-nav='1' class ="p2 block button button-transparent"> Fancy text input</a></li>
-    <li class="col-12"><a data-scroll-nav='2' class ="p2 block button button-transparent"> Form Validation</a></li>
-    <li class="col-12"><a data-scroll-nav='3' class ="p2 block button button-transparent"> Progress Bar </a></li>
+    <li class="col-12"><a data-scroll-nav='2' class ="p2 block button button-transparent"> Form validation</a></li>
+    <li class="col-12"><a data-scroll-nav='3' class ="p2 block button button-transparent"> modal window </a></li>
+    <li class="col-12"><a data-scroll-nav='4' class ="p2 block button button-transparent"> Progress bar </a></li>
     </ul>
 </nav>
 </div>

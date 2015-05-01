@@ -32,7 +32,6 @@ Clock.prototype = {
 			this.value = "pause";
 			self._update();
 		} else if(this.value == "pause"){
-			console.log("called");
 			clearInterval(start);
 			this.value = this.innerHTML = "start";
 			self.target.style.color = "red";

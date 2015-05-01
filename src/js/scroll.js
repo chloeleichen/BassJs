@@ -9,7 +9,9 @@
         var active = 0,
             NodeListEl = document.querySelectorAll('[data-scroll-index]'),
             animating = false,
-            lastIndex = NodeListEl[NodeListEl.length-1].dataset.scrollIndex;
+            lastIndex = NodeListEl[NodeListEl.length-1].dataset.scrollIndex,
+            //Last item need to be the same with window height to avoid scroll back, further fix needed, should check if scroll to bottom and distance still > 0, then return
+            e = equalHeight(NodeListEl[NodeListEl.length-1]);
 
         var navigate = function(ndx){
             if(ndx < 0 || ndx > lastIndex) return;    
@@ -20,18 +22,18 @@
                 //requestAnimationFrame(scrollit);
                 scrollit();
 
-            
             function scrollit(){      
                 distance = targetTop - window.scrollY; 
                 if (distance > 0){
                     animating = true;
                     window.scrollBy(0, scrollSpeed);
+
                     if(distance < scrollSpeed ) {
                     distance = 0;
                     window.scrollTo(0, targetTop);
                     animating = false;
                     return;
-                    }
+                    }      
                     requestAnimationFrame(scrollit);
                 }
                 if (distance < 0){
@@ -60,12 +62,12 @@
 
         function watchActive(){
             var winTop = window.pageYOffset;
-            //padding at top of the highest element
-            const padding = 16;
+            //PADDING at top of the highest element
+            var PADDING = 16;
 
             function isVisible(node){
-                return (winTop + padding) >= node.offsetTop + self.options.topOffset &&
-                (winTop + padding) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
+                return (winTop + PADDING) >= node.offsetTop + self.options.topOffset &&
+                (winTop + PADDING) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
                
             }
             var nodeList = [].slice.call(document.querySelectorAll("[data-scroll-index]")).filter(isVisible);
@@ -111,7 +113,6 @@
 
         window.onscroll = function(){
             watchActive();
-            console.log(active);
         };
 
         window.onkeydown = function(e){
@@ -140,10 +141,7 @@ forEach(tar, function(key, value){
     value.addEventListener("click", function(e){
         e.preventDefault();
         s.doScroll(e);
-        this.removeEventListener(e);
-
     })
 
 });
-
 

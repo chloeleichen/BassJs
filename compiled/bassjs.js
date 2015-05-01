@@ -71,7 +71,6 @@ Clock.prototype = {
 			this.value = "pause";
 			self._update();
 		} else if(this.value == "pause"){
-			console.log("called");
 			clearInterval(start);
 			this.value = this.innerHTML = "start";
 			self.target.style.color = "red";
@@ -91,15 +90,14 @@ window.Clock = Clock;
 		self.target = target;
 		self.base = base || null;
 		function setHeight(){
-			forEach(document.querySelectorAll(target), function(key, value){
+
 				if (self.base != null){
-					value.style.height = self.base.offsetHeight + "px";
+					self.target.style.height = self.base.offsetHeight + "px";
 				}
 				else {
-					value.style.height = window.innerHeight + "px";
-					console.log("window");
+					self.target.style.height = window.innerHeight + "px";
 				}
-			});
+
 		}
 		setHeight();
 		// handle event
@@ -112,7 +110,8 @@ window.Clock = Clock;
 })();
 
 var base = document.getElementById("content");
-var e = equalHeight("nav",base);
+var target = document.getElementById("nav");
+var e = equalHeight(target,base);
 
 //Some fancy text input styles
 (function(){
@@ -141,6 +140,50 @@ function onInputBlur(ev) {
 
 })();
 
+(function(){
+	'use strict';
+	var Modal = function(options) {
+		this.options = options;
+		this._init();
+	}
+
+	Modal.prototype = {
+		_init: function(){
+			var self = this;
+			console.log(self.options);
+			self.options.trigger.addEventListener("click", function(ev){
+				
+				self.options.modal.classList.add("modal-show");
+				self.options.overlay.addEventListener("click", function(ev){
+					self.options.modal.classList.remove("modal-show");
+				})
+
+			});
+
+			self.options.close.addEventListener("click", function(ev){
+				ev.stopPropagation();
+				self.options.modal.classList.remove("modal-show");
+			})
+
+		}
+	}
+
+	window.Modal = Modal;
+
+})();
+
+
+var overlay = document.getElementById('modal-overlay');
+var trigger = document.getElementById('modal-trigger');
+var modal = document.getElementById('modal');
+var close = document.getElementById('modal-close');
+
+var m = new Modal({
+	overlay: overlay,
+	trigger: trigger,
+	modal: modal,
+	close: close
+});
 // Animation, the old way, not request animation frame 
 // @params delay: time beetween frames 
 //		  duration: the full time animation should take
@@ -280,7 +323,9 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
         var active = 0,
             NodeListEl = document.querySelectorAll('[data-scroll-index]'),
             animating = false,
-            lastIndex = NodeListEl[NodeListEl.length-1].dataset.scrollIndex;
+            lastIndex = NodeListEl[NodeListEl.length-1].dataset.scrollIndex,
+            //Last item need to be the same with window height to avoid scroll back, further fix needed, should check if scroll to bottom and distance still > 0, then return
+            e = equalHeight(NodeListEl[NodeListEl.length-1]);
 
         var navigate = function(ndx){
             if(ndx < 0 || ndx > lastIndex) return;    
@@ -291,18 +336,18 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
                 //requestAnimationFrame(scrollit);
                 scrollit();
 
-            
             function scrollit(){      
                 distance = targetTop - window.scrollY; 
                 if (distance > 0){
                     animating = true;
                     window.scrollBy(0, scrollSpeed);
+
                     if(distance < scrollSpeed ) {
                     distance = 0;
                     window.scrollTo(0, targetTop);
                     animating = false;
                     return;
-                    }
+                    }      
                     requestAnimationFrame(scrollit);
                 }
                 if (distance < 0){
@@ -331,12 +376,12 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
 
         function watchActive(){
             var winTop = window.pageYOffset;
-            //padding at top of the highest element
-            const padding = 16;
+            //PADDING at top of the highest element
+            var PADDING = 16;
 
             function isVisible(node){
-                return (winTop + padding) >= node.offsetTop + self.options.topOffset &&
-                (winTop + padding) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
+                return (winTop + PADDING) >= node.offsetTop + self.options.topOffset &&
+                (winTop + PADDING) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
                
             }
             var nodeList = [].slice.call(document.querySelectorAll("[data-scroll-index]")).filter(isVisible);
@@ -382,7 +427,6 @@ var progressIn = new Animation(document.getElementById("progress-ease-out"), doc
 
         window.onscroll = function(){
             watchActive();
-            console.log(active);
         };
 
         window.onkeydown = function(e){
@@ -411,12 +455,9 @@ forEach(tar, function(key, value){
     value.addEventListener("click", function(e){
         e.preventDefault();
         s.doScroll(e);
-        this.removeEventListener(e);
-
     })
 
 });
-
 
 
 (function () {
@@ -433,8 +474,7 @@ forEach(tar, function(key, value){
 			self.el.addEventListener(animationEnd, function(e){
 				//console.dir(this);
 				self.el.classList.remove("shake", "swing");
-				this.removeEventListener(e);
-				console.dir(this);	
+				this.removeEventListener(e);	
 			});	
 			
 			if(value == null || value == ''){
