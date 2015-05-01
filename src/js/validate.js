@@ -10,21 +10,21 @@
 		self.validateNumber = function(){
 			//console.log(value);
 			self.el.addEventListener(animationEnd, function(e){
-				console.dir(this);
+				//console.dir(this);
 				self.el.classList.remove("shake", "swing");
 				this.removeEventListener(e);
 				console.dir(this);	
 			});	
 			
 			if(value == null || value == ''){
-				console.log("empty");
+				//console.log("empty");
 				self.ev.preventDefault();
 				self.el.classList.add("swing", "is-warning");
 				self.el.classList.remove("shake","is-error");
 				self.message.innerHTML = "This field is required";
 				return false;
 			} else if(isNaN(parseInt(value))&& value !=='' && value !== null ){
-				console.log("not a number");
+				//console.log("not a number");
 				self.ev.preventDefault();
 				self.el.classList.add("shake","is-error");
 				self.el.classList.remove("swing", "is-warning");
