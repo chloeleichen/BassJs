@@ -8,7 +8,7 @@
 	Modal.prototype = {
 		_init: function(){
 			var self = this;
-			console.log(self.options);
+			//console.log(self.options);
 			self.options.trigger.addEventListener("click", function(ev){
 				
 				self.options.modal.classList.add("modal-show");

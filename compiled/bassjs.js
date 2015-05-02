@@ -37,52 +37,6 @@ if (!NodeList.prototype.forEach) {
     /* init - you can init any event */
     throttle("resize", "optimizedResize");
 })();
-(function(){
-var Clock  = function(target, trigger){
-	this.target = target;
-	this.trigger = trigger;
-	this.stop = stop;
-	this ._init();
-}
-Clock.prototype = {
-	_create:  function(){
-		var date = new Date();
-		var hour = date.getHours() < 10? 0 + String(date.getHours()) : String(date.getHours());
-		var min = date.getMinutes() < 10? 0 + String(date.getMinutes()) : String(date.getMinutes());
-		var sec = date.getSeconds() < 10? 0 + String(date.getSeconds()) : String(date.getSeconds());
-		var currentTime = hour + ":" + min + ":" + sec ;
-		this.target.innerHTML = currentTime;
-	}
-	,
-	_update:  function(){
-		var self = this;
-		start = setInterval(function(){
-			self.target.style.color = "black";
-			self._create();
-		}, 1000);
-	}
-	,
-	_init: function(){
-		var self = this;
-	//self._create();
-	self.trigger.addEventListener("click", function(){
-		if(this.value == "start"){
-			this.innerHTML = "pause";
-			this.value = "pause";
-			self._update();
-		} else if(this.value == "pause"){
-			clearInterval(start);
-			this.value = this.innerHTML = "start";
-			self.target.style.color = "red";
-		} else{
-			return;
-		}
-		
-	});
-  }
-}
-window.Clock = Clock;
-})();
 
 (function() {
 	var equalHeight = function(target, base){
@@ -150,7 +104,7 @@ function onInputBlur(ev) {
 	Modal.prototype = {
 		_init: function(){
 			var self = this;
-			console.log(self.options);
+			//console.log(self.options);
 			self.options.trigger.addEventListener("click", function(ev){
 				
 				self.options.modal.classList.add("modal-show");
@@ -304,13 +258,8 @@ var getFunc = function(func) {
 	}
 }
 
-var progressLiner = new Animation(document.getElementById("progress-liner"), document.getElementById("block-control-liner"), {delta: getFunc("liner"), duration: 4000});
+var progressLiner = new Animation(document.getElementById("progress-liner"), document.getElementById("block-control-liner"), {delta: getFunc("circ"), duration: 4000});
 
-var progressPow = new Animation(document.getElementById("progress-pow"), document.getElementById("block-control-pow"), {delta: getFunc("pow"), duration: 4000});
-
-var progressPow = new Animation(document.getElementById("progress-bounce"), document.getElementById("block-control-bounce"), {delta: getFunc("bounce"), duration: 4000});
-
-var progressIn = new Animation(document.getElementById("progress-ease-out"), document.getElementById("block-control-ease-out"), {delta: getFunc("bounce ease out"), duration: 4000});
 })();
 (function(){
     'use strict';
@@ -458,6 +407,141 @@ forEach(tar, function(key, value){
     })
 
 });
+
+
+// A simple tabs script
+(function(){
+	'use strict';
+	var tabs = function(el, options){
+		var self = {};
+		self.el = el;
+		self.options = options;
+		self.tabs = Array.prototype.slice.call(self.el.querySelectorAll('nav > ul > li'));
+		self.items = Array.prototype.slice.call(self.el.querySelectorAll('.content-wrap > section'));
+		self.current = ((self.options.start >=0) && (self.options.start < self.tabs.length) && (self.options.start != undefined))? self.options.start : 0; 
+		show(self.current);
+		self.tabs[self.current].classList.add("tab-current");
+		initEvents();
+
+
+		function initEvents(){
+			self.tabs.forEach(function(value, key){
+				value.addEventListener("click", function(ev){
+					ev.preventDefault();
+					self.current = key;
+					resetOther(self.tabs, self.current, "tab-current" );
+					this.classList.add("tab-current");
+					show(self.current);
+				});
+			});
+		};
+
+		function show(current){
+			if((current >= 0) && (current < self.items.length) && (current != undefined)){
+			self.items[current].classList.add("content-current");
+			resetOther(self.items, current,"content-current" );
+			} else {
+				console.log("content for this tab doesnot exist, showing content for the last tab instead");
+				return;
+			}	
+		};
+
+		function resetOther(target, active, className){
+			target.forEach(function(value, key){
+				if(key != active){
+					value.classList.remove(className);
+				}
+			});
+		};
+
+
+		return self;
+	}
+	window.tabs = tabs;
+
+})();
+
+(function(){
+	var t = tabs(document.getElementById("tabs"), {start: 10});
+
+})();
+(function() {
+	var timer = function(target, trigger,lap){
+		self = {};
+		self.target = target;
+		self.trigger = trigger;
+		self.lap = lap;
+		var elapsed = 0;			
+			watchEvent();
+
+		function init(startTime){
+			self.interval = setInterval(function(){	
+				var time = new Date().getTime() - startTime;
+				elapsed = Math.floor(Math.floor(time/100)/10);
+				if(elapsed < 10){
+					second = 0 + String(elapsed);
+					//console.log(self.time);
+				} else if(10 < elapsed && elapsed < 60){
+					second = String(elapsed);
+				}else if( 60 < elapsed && elapsed < 3600){
+					var sec = Math.floor(elapsed % 60),
+						min = Math.floor(elapsed / 60 );
+					second = sec < 10 ? 0 + String(sec) : String(sec);
+					minute = min < 10 ? 0 + String(min) : String(min);
+				} else if (3600 < elapsed){
+					var minRaw = Math.floor(elapsed / 60 );
+					//console.log(minRaw);
+					var h = Math.floor(elapsed/3600);
+					var min = Math.floor(minRaw % 60);
+					var sec = Math.floor(elapsed % 60);
+					second = sec < 10 ? 0 + String(sec) : String(sec);
+					minute = min < 10 ? 0 + String(min) : String(min);
+					hour = h < 10 ? 0 + String(h) : String(h);
+				};
+				self.target.innerHTML = hour + " : " + minute + " : " + second;
+			}, 1000);
+
+		};
+		function reset(){
+			second = "00";
+			minute = "00";
+			hour = "00";
+			self.target.innerHTML = hour + " : " + minute + " : " + second;
+		};
+
+		function addLap(){
+			var node = document.createElement("LI");  
+			var textnode = document.createTextNode(timerFace);  
+			node.appendChild(textnode); 
+			document.getElementById("record").appendChild(node);			
+		};
+
+		function watchEvent(){
+			self.trigger.addEventListener("click", function(e){
+				if (self.trigger.value == "start"){
+					var start = new Date().getTime();
+					reset();
+					init(start);
+					self.trigger.value = "stop";
+					self.trigger.innerHTML = "Stop";						
+				} else if (self.trigger.value == "stop"){
+					window.clearInterval(self.interval);
+					self.trigger.value = "start";
+					self.trigger.innerHTML = "Restart";
+				}
+			});
+			self.lap.addEventListener("click", function(e){
+				addLap();
+			});
+		};
+		return self;
+	}
+	window.timer = timer;
+
+})();
+
+
+var t = timer(document.getElementById("timer"), document.getElementById("reset"), document.getElementById("lap"));
 
 
 (function () {

@@ -1,11 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-@import url(http://fonts.googleapis.com/css?family=Amatic+SC);
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 #clock{
-	font-family: 'Amatic SC', cursive;
 	font-size: 3rem;
 	font-weight: bold;
 }
@@ -33,7 +31,9 @@ body, h1, h2, h3, h4, h5, h6 {
   position: fixed;
 	}
 }
-
+progress{
+	height: 20px !important;
+}
 .input {
 	position: relative;
 	z-index: 1;
@@ -224,6 +224,87 @@ input.input__field--mia {
 	-ms-transform: translateY(0);
 	transform: translateY(0);
 	opacity: 1;
+}
+/*Base style*/
+.tabs{
+	position: relative;
+
+}
+.tabs ul{
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+}
+.tabs nav ul li {
+	flex: 1;
+	-webkit-flex: 1;
+	-moz-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	border: 1px solid rgba(40,44,42,0.1);
+
+}
+
+.tabs nav li:not(:last-child){
+	border: 1px solid rgba(40,44,42,0.1);
+}
+
+
+
+.tabs nav a{
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2.5;
+}
+
+
+.tabs nav li.tab-current a {
+	color: #74777b;
+}
+
+.tabs nav a:focus, .tabs nav a:hover  {
+	outline: none;
+	text-decoration: none;
+}
+
+.tabs i{
+	z-index: 10;
+	display: block;
+	vertical-align: middle;
+	text-transform: none;
+	font-weight: normal;
+	font-variant: normal;
+	font-size: 1.3em;
+	line-height: 1;
+	speak: none;
+	-webkit-backface-visibility: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 2rem;
+}
+
+.content-wrap section{
+	display: none;
+}
+
+.content-wrap section.content-current {
+	display: block;
+}
+
+@media screen and (max-width: 58em) {
+	.tabs nav a.icon span {
+		display: none;
+	}
 }
 .animated {
   -webkit-animation-duration: 1s;

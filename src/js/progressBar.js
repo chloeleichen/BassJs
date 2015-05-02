@@ -118,11 +118,6 @@ var getFunc = function(func) {
 	}
 }
 
-var progressLiner = new Animation(document.getElementById("progress-liner"), document.getElementById("block-control-liner"), {delta: getFunc("liner"), duration: 4000});
+var progressLiner = new Animation(document.getElementById("progress-liner"), document.getElementById("block-control-liner"), {delta: getFunc("circ"), duration: 4000});
 
-var progressPow = new Animation(document.getElementById("progress-pow"), document.getElementById("block-control-pow"), {delta: getFunc("pow"), duration: 4000});
-
-var progressPow = new Animation(document.getElementById("progress-bounce"), document.getElementById("block-control-bounce"), {delta: getFunc("bounce"), duration: 4000});
-
-var progressIn = new Animation(document.getElementById("progress-ease-out"), document.getElementById("block-control-ease-out"), {delta: getFunc("bounce ease out"), duration: 4000});
 })();
