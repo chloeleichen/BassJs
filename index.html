@@ -161,10 +161,12 @@
 </div>
 <script src="compiled/bassjs.js"></script>
 <script> 
-//Clock
+//Timer
+var t = timer(document.getElementById("timer"), document.getElementById("reset"), document.getElementById("lap"));
 
 
-//validate
+
+//Validate
   var input = document.getElementById("input__field--validate");
   var trigger = document.getElementById("validate");
   var message = document.getElementById("input__message--validate");

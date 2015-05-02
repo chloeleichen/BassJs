@@ -4,8 +4,12 @@
 		self.target = target;
 		self.trigger = trigger;
 		self.lap = lap;
-		var elapsed = 0;			
-			watchEvent();
+		var elapsed = 0,
+			second = "00",
+			minute = "00",
+			hour = "00",
+			timerFace = null;			
+		watchEvent();
 
 		function init(startTime){
 			self.interval = setInterval(function(){	
@@ -31,15 +35,10 @@
 					minute = min < 10 ? 0 + String(min) : String(min);
 					hour = h < 10 ? 0 + String(h) : String(h);
 				};
-				self.target.innerHTML = hour + " : " + minute + " : " + second;
-			}, 1000);
+				timerFace = hour + " : " + minute + " : " + second;
+				self.target.innerHTML = timerFace;
+			}, 100);
 
-		};
-		function reset(){
-			second = "00";
-			minute = "00";
-			hour = "00";
-			self.target.innerHTML = hour + " : " + minute + " : " + second;
 		};
 
 		function addLap(){
@@ -53,7 +52,6 @@
 			self.trigger.addEventListener("click", function(e){
 				if (self.trigger.value == "start"){
 					var start = new Date().getTime();
-					reset();
 					init(start);
 					self.trigger.value = "stop";
 					self.trigger.innerHTML = "Stop";						
@@ -72,7 +70,3 @@
 	window.timer = timer;
 
 })();
-
-
-var t = timer(document.getElementById("timer"), document.getElementById("reset"), document.getElementById("lap"));
-
