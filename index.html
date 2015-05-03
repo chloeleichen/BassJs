@@ -16,17 +16,19 @@
 <main id="content" class="sm-col sm-col-right sm-col-10">
   <div class="container-small px2 sm-px3 py2 mb3">
     <!-- A clock  -->
-    <section data-scroll-index='0' class="overflow-hidden bg-white border rounded timer">
+    <section data-scroll-index='0' class="overflow-hidden border rounded timer">
       <div class="p2 bg-silver">
-        <h1 class="h2 m0">Timer</h1>
+        <h1 class="h2 m0">Stopwatch</h1>
       </div>
 
 
-      <div class="p2">
+      <div class="timer-body">
         <p class="m0" id = "timer">00 : 00 : 00 </p>
         <ul id = "record"></ul>
-        <button id = "reset" class="button mt2 mb2  black bg-darken-3" value = "start"> Start </button> 
-        <button id = "lap" class="button m2 ml0 black bg-darken-3" value = "lap"> Lap </button> 
+        <div class="timer-control">
+        <button id = "timer-start" class=" mt2 mb2 bg-white" value = "start"> Start </button> 
+        <button id = "timer-lap" class=" m2 ml0 bg-white" value = "lap"> Lap </button> 
+        </div>
         </div>
       </section>
       <!-- end of clock  -->
@@ -148,7 +150,7 @@
 </main>
 <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
   <ul class="list-reset mt2 mb1" >
-    <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Digital clock </a></li>
+    <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Stopwatch </a></li>
     <li class="col-12"><a data-scroll-nav='1' class ="p2 block button button-transparent"> Fancy text input</a></li>
     <li class="col-12"><a data-scroll-nav='2' class ="p2 block button button-transparent"> Form validation</a></li>
     <li class="col-12"><a data-scroll-nav='3' class ="p2 block button button-transparent"> Modal window </a></li>
@@ -162,7 +164,7 @@
 <script src="compiled/bassjs.js"></script>
 <script> 
 //Timer
-var t = timer(document.getElementById("timer"), document.getElementById("reset"), document.getElementById("lap"));
+var t = timer(document.getElementById("timer"), document.getElementById("timer-start"), document.getElementById("timer-lap"));
 
 
 

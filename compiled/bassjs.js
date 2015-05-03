@@ -466,16 +466,18 @@ forEach(tar, function(key, value){
 
 })();
 (function() {
-	var timer = function(target, trigger,lap){
+	var timer = function(target, trigger,lap, reset){
 		self = {};
 		self.target = target;
 		self.trigger = trigger;
 		self.lap = lap;
+		self.reset = reset;
 		var elapsed = 0,
 			second = "00",
 			minute = "00",
 			hour = "00",
-			timerFace = null;			
+			timerFace = null,
+			lapCount = 1;			
 		watchEvent();
 
 		function init(startTime){
@@ -509,10 +511,12 @@ forEach(tar, function(key, value){
 		};
 
 		function addLap(){
+			
 			var node = document.createElement("LI");  
-			var textnode = document.createTextNode(timerFace);  
+			var textnode = document.createTextNode("lap"+ lapCount+ " : " + timerFace);  
 			node.appendChild(textnode); 
-			document.getElementById("record").appendChild(node);			
+			document.getElementById("record").appendChild(node);
+			lapCount ++;			
 		};
 
 		function watchEvent(){
@@ -521,16 +525,34 @@ forEach(tar, function(key, value){
 					var start = new Date().getTime();
 					init(start);
 					self.trigger.value = "stop";
-					self.trigger.innerHTML = "Stop";						
+					self.trigger.innerHTML = "Stop";
+					self.lap.value = "lap";
+					self.lap.innerHTML = "Lap";						
 				} else if (self.trigger.value == "stop"){
 					window.clearInterval(self.interval);
 					self.trigger.value = "start";
 					self.trigger.innerHTML = "Restart";
+					self.lap.value = "reset";
+					self.lap.innerHTML = "Reset";
 				}
 			});
+
 			self.lap.addEventListener("click", function(e){
-				addLap();
+				if (self.lap.value == "lap"){
+					addLap();
+				} else if(self.lap.value == "reset"){
+					document.getElementById("record").innerHTML = '';
+					window.clearInterval(self.interval);
+					second = minute  = hour = "00";
+					self.trigger.value = "start";
+					self.trigger.innerHTML = "Start";
+					timerFace = hour + " : " + minute + " : " + second;
+					self.target.innerHTML = timerFace;
+
+				}
+				
 			});
+
 		};
 		return self;
 	}
