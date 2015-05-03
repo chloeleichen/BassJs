@@ -1,0 +1,8 @@
+.select-dropdown input{
+	display: none;
+
+}
+
+.select-dropdown ul {
+	cursor: pointer;
+}

@@ -220,6 +220,14 @@ input.input__field--mia {
 	transform: translateY(0);
 	opacity: 1;
 }
+.select-dropdown input{
+	display: none;
+
+}
+
+.select-dropdown ul {
+	cursor: pointer;
+}
 /*Base style*/
 .tabs{
 	position: relative;
