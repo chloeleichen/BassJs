@@ -119,5 +119,6 @@ var getFunc = function(func) {
 }
 
 var progressLiner = new Animation(document.getElementById("progress-liner"), document.getElementById("block-control-liner"), {delta: getFunc("circ"), duration: 4000});
+var progressBounce = new Animation(document.getElementById("progress-bounce"), document.getElementById("block-control-bounce"), {delta: getFunc("bounce ease in"), duration: 4000});
 
 })();
