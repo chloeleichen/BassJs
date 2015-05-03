@@ -9,11 +9,13 @@
 			second = "00",
 			minute = "00",
 			hour = "00",
-			timerFace = null,
-			lapCount = 1;			
+			timerFace = hour + " : " + minute + " : " + second,
+			lapCount = 1,
+			active = false;			
 		watchEvent();
 
 		function init(startTime){
+			
 			self.interval = setInterval(function(){	
 				var time = new Date().getTime() - startTime;
 				elapsed = Math.floor(Math.floor(time/100)/10);
@@ -46,36 +48,44 @@
 		function addLap(){
 			
 			var node = document.createElement("LI");  
-			var textnode = document.createTextNode("lap"+ lapCount+ " : " + timerFace);  
+			var textnode = document.createTextNode(timerFace);  
 			node.appendChild(textnode); 
-			document.getElementById("record").appendChild(node);
-			lapCount ++;			
+			document.getElementById("record").appendChild(node);		
 		};
 
 		function watchEvent(){
 			self.trigger.addEventListener("click", function(e){
 				if (self.trigger.value == "start"){
 					var start = new Date().getTime();
+					document.getElementById("record").innerHTML = '';
 					init(start);
+					active = true;
 					self.trigger.value = "stop";
 					self.trigger.innerHTML = "Stop";
 					self.lap.value = "lap";
-					self.lap.innerHTML = "Lap";						
+					self.lap.innerHTML = "Lap";
+					self.lap.classList.add("timer-active");					
 				} else if (self.trigger.value == "stop"){
 					window.clearInterval(self.interval);
 					self.trigger.value = "start";
 					self.trigger.innerHTML = "Restart";
 					self.lap.value = "reset";
 					self.lap.innerHTML = "Reset";
+
 				}
 			});
 
 			self.lap.addEventListener("click", function(e){
+				if (active == true){
 				if (self.lap.value == "lap"){
 					addLap();
 				} else if(self.lap.value == "reset"){
 					document.getElementById("record").innerHTML = '';
 					window.clearInterval(self.interval);
+					active = false;
+					self.lap.classList.remove("timer-active");
+					self.lap.value = "lap";
+					self.lap.innerHTML = "Lap";	
 					second = minute  = hour = "00";
 					self.trigger.value = "start";
 					self.trigger.innerHTML = "Start";
@@ -83,6 +93,10 @@
 					self.target.innerHTML = timerFace;
 
 				}
+			} else {
+				e.preventDefault();
+				return;
+			}
 				
 			});
 

@@ -314,8 +314,16 @@ input.input__field--mia {
 	background: #ecf0f1;
 }
 
-#record{
+#record li{
+	display: block;
+	padding: 0.5em;
+	border-bottom: 1px solid #dddddd;
+	font-size: 1.3rem;
+	color: #999999;
+}
 
+#record{
+	text-align: center;
 }
 
 .timer button{
@@ -345,9 +353,16 @@ input.input__field--mia {
 
 }
 
-
 #timer-lap{
+	color: #7f8c8d;
+}
 
+.timer-active#timer-lap[value="lap"]{
+	color: #2e8ece;
+}
+
+.timer-active#timer-lap[value="reset"]{
+	color: #2c3e50;
 }
 .animated {
   -webkit-animation-duration: 1s;
