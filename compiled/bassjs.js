@@ -63,9 +63,7 @@ if (!NodeList.prototype.forEach) {
 	window.equalHeight = equalHeight;
 })();
 
-var base = document.getElementById("content");
-var target = document.getElementById("nav");
-var e = equalHeight(target,base);
+
 
 //Some fancy text input styles
 (function(){

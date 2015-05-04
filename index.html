@@ -210,6 +210,19 @@
       </section>
       <!-- end of stopwatch  -->
 
+      <section data-scroll-index='9' class="overflow-hidden border rounded thanks mt2">
+        <div class="p2 bg-silver">
+          <h1 class="h2 m0">Thank you for checking it out!</h1>
+        </div>
+          
+          <div class="flex flex-center p2 " style="min-height:128px">
+            <div class="bold p2 mx-auto">
+              <a href="https://twitter.com/chloechenlei">Let me know</a> if you have any questions!
+            </div>
+          </div>
+
+      </section>
+
       </main>
       <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
         <ul class="list-reset mt2 mb1" >
@@ -223,6 +236,7 @@
           <li class="col-12"><a data-scroll-nav='6' class ="p2 block button button-transparent"> HTML select drop-down </a></li>
           <li class="col-12"><a data-scroll-nav='7' class ="p2 block button button-transparent"> Progress bar </a></li>
           <li class="col-12"><a data-scroll-nav='8' class ="p2 block button button-transparent"> Stopwatch </a></li>
+          <li class="col-12"><a data-scroll-nav='9' class ="p2 block button button-transparent"> Thank you </a></li>
         </ul>
       </nav>
     </div>
@@ -244,6 +258,19 @@ trigger.addEventListener("click", function(e){
   });
   validateN.validateNumber();
 });
+
+//Equal height 
+
+var w = window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+
+if (w >= 640){
+  var base = document.getElementById("content");
+  var target = document.getElementById("nav");
+  var e = equalHeight(target,base);
+}
+
 
 
 </script>
