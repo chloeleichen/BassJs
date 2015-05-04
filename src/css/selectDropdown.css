@@ -1,11 +1,8 @@
 .select-dropdown input, .select-dropdown select{
 	display: none;
-
 }
-
 .select-dropdown ul {
 	cursor: pointer;
-
 }
 
 .select-dropdown input ~ span {
@@ -126,27 +123,20 @@ li[data-value ="4"]{
 	font-size: 18px;
 }
 
-
-
 .select-wrapper .Github::before{
 	content: "\f09b";
-
-
 }
 
 .select-wrapper .Facebook::before{
 	content: "\f09a";
-
 }
 
 .select-wrapper .Twitter::before{
 	content: "\f099";
-
 }
 
 .select-wrapper .Linkedin::before{
 	content: "\f0e1";
-
 }
 
 
