@@ -327,11 +327,9 @@ var progressBounce = new Animation(document.getElementById("progress-bounce"), d
         function watchActive(){
             var winTop = window.pageYOffset;
             //PADDING at top of the highest element
-            var PADDING = 16;
-
             function isVisible(node){
-                return (winTop + PADDING) >= node.offsetTop + self.options.topOffset &&
-                (winTop + PADDING) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
+                return (winTop + self.options.topOffset) >= node.offsetTop + self.options.topOffset &&
+                (winTop + self.options.topOffset) < node.offsetTop + (self.options.topOffset) + node.offsetHeight;
                
             }
             var nodeList = [].slice.call(document.querySelectorAll("[data-scroll-index]")).filter(isVisible);

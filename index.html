@@ -4,7 +4,21 @@
   <meta charset="utf-8">
   <title>BassJs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A vanilla JS UI library for the lightning-fast, modular CSS framework basscss">
+  <meta name="description" content="A vanilla JS UI toolkit featuring form validation, modal window and so on">
+  <meta name="author" content="Chloe Chen">
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="BassJs Javascript UI toolkit ">
+  <meta name="twitter:description" content="A vanilla JS UI toolkit featuring navigation, progress bar, form input validation and so on">
+  <meta name="twitter:creator" content="@chloeleichen">
+  <meta name="twitter:image" content="http://chloeleichen.github.io/BassJs/screenshot.jpg">
+  <!-- Open Graph data -->
+  <meta property="og:title" content="BassJs Javascript UI toolkit" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://chloeleichen.github.io/BassJs/" />
+  <meta property="og:image" content="http://chloeleichen.github.io/BassJs/screenshot.jpg" />
+  <meta property="og:description" content="A vanilla JS UI toolkit featuring form validation, modal window and so on" />
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/6.0.0/basscss.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="compiled/style.css" />
@@ -15,30 +29,28 @@
   <!-- main ui element -->
   <main id="content" class="sm-col sm-col-right sm-col-10">
     <div class="container-small px2 sm-px3 py2 mb3">
-      <!-- A clock  -->
-      <section data-scroll-index='0' class="overflow-hidden border rounded timer">
+      <!-- Start intro -->
+      <section data-scroll-index='0' class="overflow-hidden border rounded intro mt2">
         <div class="p2 bg-silver">
-          <h1 class="h2 m0">Stopwatch</h1>
+          <h1 class="h2 m0">BassJs Javascript UI toolkit</h1>
         </div>
-
-
-        <div class="timer-body">
-          <p class="m0" id = "timer">00 : 00 : 00 </p>
-          <ul id = "record" class="list-reset"></ul>
-          <div class="timer-control">
-            <button id = "timer-start" class=" mt2 mb2 bg-white" value = "start"> Start </button> 
-            <button id = "timer-lap" class=" m2 ml0 bg-white" value = "lap"> Lap </button> 
-          </div>
+        <div class="intro-body p2">
+          <p> This is a small UI toolkit containing 8 Javascript UI widgets that would hopefully make your life easier. </p>
+          <p> It uses lightweight Basscss CSS framework, which is totally awsome, and you should <a href="http://www.basscss.com/">check it out.</a> </p> 
+          <p> The project is in beta, please report any issues you see. </p> 
+          <p> The project is under MIT license. </p>
+          <p>The code is on <a href="https://github.com/chloeleichen/BassJs">Github</a></p>
+          <p>And you can find me on <a href="https://twitter.com/chloechenlei">Twitter</a></p>      
         </div>
       </section>
-      <!-- end of clock  -->
-
+      <!-- End intro -->
       <!--input style   -->
       <section data-scroll-index='1' class="overflow-hidden bg-white border rounded mt2" id="text-input">
         <div class="p2 bg-silver">
           <h1 class="h2 m0">Fancy text input</h1>
         </div>
         <div class="p2 bg-darken-1">
+          <p class="p2"><strong>A text input field for better use experience </strong></p>
           <form>
             <div class="input mt4 mb2 input--mia">
               <input class="input__field input__field--mia" type="text" id="input-0" />
@@ -47,7 +59,7 @@
               </label>
             </div>
 
-            <div data-scroll-index='1' class="input mt4 mb2 input--mia">
+            <div data-scroll-index='3' class="input mt4 mb2 input--mia">
               <input class="input__field input__field--mia" type="text" id="input-1" />
               <label class="input__label input__label--mia" for="input-1">
                 <span class="input__label-content input__label-content--mia">Your email</span>
@@ -64,8 +76,9 @@
         </div>
         <div class="p2 bg-darken-1">
           <form class="sm-col-8">
-            <label class="block h3"> Phone Number </label>
-            <label class="block mt1">Click "Validate" button to see it in action </label>
+            <p> <strong>Example number field</strong></p>
+            <p>This field accepts only numbers, if you do not put in a number, the field will show a little reminder. </p>
+            <p>Click "Validate" button to see it in action </p>
             <input type="text" id="input__field--validate" class="inline-block mt2 mb2 mr3 field-light animated">         
             <button type="submit" class="button mt2 mb2 bg-blue" id="validate">Validate</button>
             <span class="block mb2 h5" id ="input__message--validate"></span>
@@ -143,10 +156,11 @@
         <!-- Start of dropdown list -->
         <section data-scroll-index='6' class="overflow-hidden bg-darken-1 border rounded mt2 select-dropdown">
           <div class="p2 bg-silver">
-            <h1 class="h2 m0">HTML select dropdown</h1>
+            <h1 class="h2 m0">HTML select drop-down</h1>
           </div>
           <div class="p2">
-            <p>A much cooler select box: </p>
+            <p>HTML &lt;select&gt; elements are difficult to style, and they behave differently in different browsers as well. </p>
+            <p>This widget gives you a much cooler select box: </p>
           </div>
           <div class="select-wrapper mb2 ml2">
             <select id="select-dropdown" name="dropdown" class="select">
@@ -168,10 +182,10 @@
           </div>
           <div class="p2">
             <!-- <div class="m0 block-wrapper relative"> <div class="bg-maroon" id = "block"></div></div> -->
-            <h3>Smooth progress </h3>
+            <p><strong>Smooth progress</strong> </p>
             <progress value="0" class="progress orange " id = "progress-liner"></progress>
             <p><button id = "block-control-liner" class=" button mt2 mb2 black bg-darken-3"> Start progress </button>  </p>
-            <h3>Bouncing progress </h3>
+            <p><strong>Bouncing progress</strong> </p>
             <progress value="0" class="progress olive " id = "progress-bounce"></progress>
             <p><button id = "block-control-bounce" class=" button mt2 mb2 black bg-darken-3"> Start progress </button> </p>
 
@@ -179,17 +193,36 @@
 
         </section>
         <!-- End of animated progress bar-->
+      <!-- A stopwatch  -->
+      <section data-scroll-index='8' class="overflow-hidden border rounded timer mt2">
+        <div class="p2 bg-silver">
+          <h1 class="h2 m0">Stopwatch</h1>
+        </div>
+        <p class="p2">And finally, here is a stopwatch, just for some fun.</p>
+        <div class="timer-body">
+          <p class="m0" id = "timer">00 : 00 : 00 </p>
+          <ul id = "record" class="list-reset"></ul>
+          <div class="timer-control">
+            <button id = "timer-start" class=" mt2 mb2 bg-white" value = "start"> Start </button> 
+            <button id = "timer-lap" class=" m2 ml0 bg-white" value = "lap"> Lap </button> 
+          </div>
+        </div>
+      </section>
+      <!-- end of stopwatch  -->
+
       </main>
       <nav id ="nav" class = "sm-col z2 sm-fixed sm-col-2 border-right">
         <ul class="list-reset mt2 mb1" >
-          <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Stopwatch </a></li>
+          <li class="col-12"><a data-scroll-nav='0' class ="p2 bg-aqua block button button-transparent"> Introduction </a></li>
+
           <li class="col-12"><a data-scroll-nav='1' class ="p2 block button button-transparent"> Fancy text input</a></li>
           <li class="col-12"><a data-scroll-nav='2' class ="p2 block button button-transparent"> Form validation</a></li>
           <li class="col-12"><a data-scroll-nav='3' class ="p2 block button button-transparent"> Modal window </a></li>
           <li class="col-12"><a data-scroll-nav='4' class ="p2 block button button-transparent"> Scrolling navigation </a></li>
           <li class="col-12"><a data-scroll-nav='5' class ="p2 block button button-transparent"> Tabs </a></li>
-          <li class="col-12"><a data-scroll-nav='6' class ="p2 block button button-transparent"> HTML select dropdown </a></li>
+          <li class="col-12"><a data-scroll-nav='6' class ="p2 block button button-transparent"> HTML select drop-down </a></li>
           <li class="col-12"><a data-scroll-nav='7' class ="p2 block button button-transparent"> Progress bar </a></li>
+          <li class="col-12"><a data-scroll-nav='8' class ="p2 block button button-transparent"> Stopwatch </a></li>
         </ul>
       </nav>
     </div>
