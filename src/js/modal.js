@@ -30,7 +30,6 @@
 
 })();
 
-
 var overlay = document.getElementById('modal-overlay');
 var trigger = document.getElementById('modal-trigger');
 var modal = document.getElementById('modal');
