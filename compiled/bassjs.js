@@ -271,16 +271,18 @@ var progressBounce = new Animation(document.getElementById("progress-bounce"), d
         var active = 0,
             NodeListEl = document.querySelectorAll('[data-scroll-index]'),
             animating = false,
-            lastIndex = NodeListEl[NodeListEl.length-1].dataset.scrollIndex,
+            lastIndex = parseInt(NodeListEl[NodeListEl.length-1].dataset.scrollIndex),
             //Last item need to be the same with window height to avoid scroll back, further fix needed, should check if scroll to bottom and distance still > 0, then return
             e = equalHeight(NodeListEl[NodeListEl.length-1]);
 
         var navigate = function(ndx){
+            //console.log(ndx);
             if(ndx < 0 || ndx > lastIndex) return;    
             var targetTop = document.querySelector('[data-scroll-index="'+ ndx + '"]').offsetTop + self.options.topOffset,
                 distance = targetTop - window.scrollY,
                 //Define speed to ensure scroll consistancy whether it's scrolling betweem two far away position or two very close position
                 scrollSpeed = self.options.speed;
+                //console.log(document.querySelector('[data-scroll-index="'+ ndx + '"]'));
                 //requestAnimationFrame(scrollit);
                 scrollit();
 
@@ -331,9 +333,11 @@ var progressBounce = new Animation(document.getElementById("progress-bounce"), d
                
             }
             var nodeList = [].slice.call(document.querySelectorAll("[data-scroll-index]")).filter(isVisible);
+            //console.log(nodeList[0]);
             if(nodeList.length > 0){
                 var newActive = nodeList[0].dataset.scrollIndex;
                 updateActive(newActive);
+                //console.log(newActive);
 
             }
         };
